@@ -9,12 +9,6 @@ import "./Item.sol";
  * With this it's possible to add items and pay them, move them forward in the supply chain and trigger a delivery.
  */
 contract ItemManager {
-    enum SupplyChainSteps {
-        Created,
-        Paid,
-        Delivered
-    }
-
     struct S_Item {
         Item _item;
         ItemManager.SupplyChainSteps _step;
@@ -22,6 +16,12 @@ contract ItemManager {
     }
     mapping(uint256 => S_Item) public items;
     uint256 index;
+
+    enum SupplyChainSteps {
+        Created,
+        Paid,
+        Delivered
+    }
 
     event SupplyChainStep(uint256 _itemIndex, uint256 _step, address _address);
 
@@ -38,7 +38,7 @@ contract ItemManager {
         Item item = items[_index]._item;
         require(
             address(item) == msg.sender,
-            "Only items are allows to update themselves"
+            "Only items are allowed to update themselves"
         );
         require(item.priceInWei() == msg.value, "Not fully paid yet");
         require(
