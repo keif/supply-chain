@@ -4,6 +4,11 @@ pragma solidity ^0.8.15;
 
 import "./ItemManager.sol";
 
+/**
+ * Item
+ * Responsible for taking the payment, handing to ItemManager
+ * This allows each creation to be tied to an address
+ */
 contract Item {
     uint256 public priceInWei;
     uint256 public paidWei;

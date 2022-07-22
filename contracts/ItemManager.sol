@@ -4,6 +4,10 @@ pragma solidity ^0.8.15;
 
 import "./Item.sol";
 
+/**
+ * Item Manager
+ * With this it's possible to add items and pay them, move them forward in the supply chain and trigger a delivery.
+ */
 contract ItemManager {
     enum SupplyChainSteps {
         Created,
